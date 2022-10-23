@@ -1,6 +1,6 @@
-package net.fabricmc.example.mixin;
+package ga.projectcenterome.lomod.mixin;
 
-import net.fabricmc.example.ExampleMod;
+import ga.projectcenterome.lomod.ExampleMod;
 import net.minecraft.client.gui.screen.TitleScreen;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
