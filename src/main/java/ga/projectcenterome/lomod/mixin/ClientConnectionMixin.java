@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class ClientConnectionMixin {
     @Inject(at = @At("HEAD"), method = "send(Lnet/minecraft/network/Packet;Lnet/minecraft/network/PacketCallbacks;)V", cancellable = true)
     private void send(Packet<?> packet, @Nullable PacketCallbacks callbacks, CallbackInfo callback) {
-        ExampleMod.LOGGER.info("SENDING PACKET: " + packet.getClass().getName());
+        //ExampleMod.LOGGER.info("SENDING PACKET: " + packet.getClass().getName());
     }
     @Inject(at = @At("HEAD"), method = "handlePacket", cancellable = true)
     private static void handlePacket(Packet<?> packet, PacketListener listener, CallbackInfo callback) {
