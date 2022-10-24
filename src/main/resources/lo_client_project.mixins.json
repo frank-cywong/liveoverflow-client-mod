@@ -8,7 +8,8 @@
   "client": [
     "ExampleMixin",
     "ClientConnectionMixin",
-    "GameStateChangeS2CPacketMixin"
+    "GameStateChangeS2CPacketMixin",
+    "WorldBorderInitializeS2CPacketMixin"
   ],
   "injectors": {
     "defaultRequire": 1

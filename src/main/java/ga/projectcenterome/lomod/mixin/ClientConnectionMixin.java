@@ -22,6 +22,6 @@ public class ClientConnectionMixin {
     }
     @Inject(at = @At("HEAD"), method = "handlePacket", cancellable = true)
     private static void handlePacket(Packet<?> packet, PacketListener listener, CallbackInfo callback) {
-        ExampleMod.LOGGER.info("RECEIVING PACKET: " + packet.getClass().getName());
+        //ExampleMod.LOGGER.info("RECEIVING PACKET: " + packet.getClass().getName());
     }
 }
