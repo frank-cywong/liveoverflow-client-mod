@@ -14,6 +14,6 @@ public class WorldBorderInitializeS2CPacketMixin {
     @Inject(at = @At("HEAD"), method="apply", cancellable = true)
     private void apply(ClientPlayPacketListener clientPlayPacketListener, CallbackInfo callback){
         ExampleMod.LOGGER.info("DROPPING WORLD BORDER INITIALIZE PACKET");
-        return;
+        callback.cancel();
     }
 }
