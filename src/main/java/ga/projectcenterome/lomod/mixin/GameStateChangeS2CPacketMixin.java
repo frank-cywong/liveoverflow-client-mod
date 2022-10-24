@@ -32,7 +32,7 @@ public abstract class GameStateChangeS2CPacketMixin {
         }
         float rVal = ((GameStateChangeS2CPacket)((Object)this)).getValue();
         ExampleMod.LOGGER.info("PLAY EVENT PACKET LOGGED: rId = " + rId + ", rVal = " + rVal);
-        if(rId == "GAME_MODE_CHANGED" || rId == "DEMO_MESSAGE_SHOWN"){
+        if(rId == "GAME_MODE_CHANGED" || rId == "DEMO_MESSAGE_SHOWN" || rId == "GAME_WON"){
             return;
         }
     }
