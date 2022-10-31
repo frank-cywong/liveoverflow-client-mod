@@ -23,7 +23,8 @@ import java.util.Queue;
 public class ClientConnectionMixin {
     @Inject(at = @At("HEAD"), method = "send(Lnet/minecraft/network/Packet;Lnet/minecraft/network/PacketCallbacks;)V", cancellable = true)
     private void send(Packet<?> packet, @Nullable PacketCallbacks callbacks, CallbackInfo callback) {
-        ExampleMod.LOGGER.info("SENDING PACKET: " + packet.getClass().getName());
+        //ExampleMod.LOGGER.info("SENDING PACKET: " + packet.getClass().getName());
+        /* this doesn't work
         if(packet instanceof PlayerMoveC2SPacket){
             ExampleMod.LOGGER.info("PACKET TYPE DETECTED");
             PlayerMoveC2SPacket oldP = (PlayerMoveC2SPacket)(packet);
@@ -53,12 +54,12 @@ public class ClientConnectionMixin {
                         Queue<?> pq = cc.getPacketQueue();
                         pq.add(new ClientConnection.QueuedPacket(packet, callbacks));
                     }
-                    */
                     cc.send(npacket, callbacks);
                     callback.cancel();
                 }
             }
         }
+        */
         //cc.send(packet, callbacks);
     }
     @Inject(at = @At("HEAD"), method = "handlePacket", cancellable = true)

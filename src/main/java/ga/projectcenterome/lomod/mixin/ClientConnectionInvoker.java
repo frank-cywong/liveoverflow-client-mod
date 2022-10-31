@@ -1,3 +1,4 @@
+/*
 package ga.projectcenterome.lomod.mixin;
 
 import net.minecraft.network.ClientConnection;
@@ -23,3 +24,4 @@ public interface ClientConnectionInvoker {
     @Invoker("send")
     public void send(Packet<?> packet, @Nullable PacketCallbacks callbacks);
 }
+*/
