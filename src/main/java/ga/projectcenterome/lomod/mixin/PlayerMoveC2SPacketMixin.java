@@ -15,7 +15,7 @@ public class PlayerMoveC2SPacketMixin {
     private static double injected(double x) {
         //double nx = (((double)((long)(x * 10))) / 10.0);
         double nx = x;
-        for(int i = 0; i < 5; i++) {
+        for(int i = 0; i < 100; i++) {
             int modx = (int) ((long) (nx * 1000) % 10);
             nx = ((((long)(1000 * nx)) + (10 - modx)) / 1000.0);
             if((long)(nx * 1000) % 10 == 0){
@@ -27,6 +27,8 @@ public class PlayerMoveC2SPacketMixin {
         }
         if((long)(nx * 1000) % 10 != 0){
             ExampleMod.LOGGER.warn("LIKELY ROUNDING ERROR, NX NOT REVERSING WORK");
+            // force round to integer
+            nx = (int)(nx);
         }
         ExampleMod.LOGGER.info("CHANGING X COORD FROM: " + x + " TO " + nx);
         return nx;
