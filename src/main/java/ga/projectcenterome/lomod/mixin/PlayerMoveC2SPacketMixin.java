@@ -14,7 +14,7 @@ public class PlayerMoveC2SPacketMixin {
     @ModifyVariable(method = "<init>(DDDFFZZZ)V", at = @At("HEAD"), ordinal = 0)
     private static double injected(double x) {
         //double nx = (((double)((long)(x * 10))) / 10.0);
-        int modx = (long)(x * 1000) % 10;
+        int modx = (int)((long)(x * 1000) % 10);
         double nx = (x + (10 - modx) / 1000.0);
         if((long)(nx * 1000) % 10 != 0){
             ExampleMod.LOGGER.warn("LIKELY ROUNDING ERROR, NX NOT REVERSING WORK");
