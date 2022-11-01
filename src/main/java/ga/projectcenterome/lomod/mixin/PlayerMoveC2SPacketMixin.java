@@ -17,18 +17,18 @@ public class PlayerMoveC2SPacketMixin {
         double nx = x;
         for(int i = 0; i < 100; i++) {
             int modx = (int) ((long) (nx * 1000) % 10);
-            nx = ((((long)(1000 * nx)) + (10 - modx)) / 1000.0);
+            nx = ((((long)(1000 * nx)) - modx) / 1000.0);
             if((long)(nx * 1000) % 10 == 0){
                 break;
             }
-            if(nx - x > 0.01D){
-                nx -= 0.01D;
+            if(x - nx > 0.01D){
+                nx = ((long)(1000 * nx) + 10)/1000.0;
             }
         }
         if((long)(nx * 1000) % 10 != 0){
             ExampleMod.LOGGER.warn("LIKELY ROUNDING ERROR, NX NOT REVERSING WORK");
-            // force round to integer
-            nx = (int)(nx);
+            // last resort
+            nx = ((long)(nx * 100) / 100.0);
         }
         ExampleMod.LOGGER.info("CHANGING X COORD FROM: " + x + " TO " + nx);
         return nx;
