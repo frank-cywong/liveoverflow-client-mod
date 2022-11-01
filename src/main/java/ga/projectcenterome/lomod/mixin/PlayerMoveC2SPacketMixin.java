@@ -13,8 +13,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class PlayerMoveC2SPacketMixin {
     @ModifyVariable(method = "<init>(DDDFFZZZ)V", at = @At("HEAD"), ordinal = 0)
     private static double injected(double x) {
-        ExampleMod.LOGGER.info("CHANGING X COORD FROM: " + x + " TO " + (((double)((int)(x * 100))) / 100.0));
-        return (((double)((int)(x * 100))) / 100.0);
+        double nx = (((double)((long)(x * 20))) / 20.0);
+        if((long)(nx * 1000) % 10 != 0){
+            ExampleMod.LOGGER.warn("LIKELY ROUNDING ERROR, NX NOT REVERSING WORK");
+        }
+        ExampleMod.LOGGER.info("CHANGING X COORD FROM: " + x + " TO " + nx);
+        return nx;
     }
     /*
     @ModifyArg(method = "<init>(DDDFFZZZ)V", at=@At("HEAD"), cancellable = true)
