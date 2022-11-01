@@ -1,4 +1,3 @@
-/*
 package ga.projectcenterome.lomod.mixin;
 
 import net.minecraft.network.ClientConnection;
@@ -21,7 +20,6 @@ public interface ClientConnectionInvoker {
     @Invoker("sendImmediately")
     public void invokeSendImmediately(Packet<?> packet, @Nullable PacketCallbacks callbacks);
     */
-    @Invoker("send")
-    public void send(Packet<?> packet, @Nullable PacketCallbacks callbacks);
+    @Invoker("sendImmediately")
+    public void sendIm(Packet<?> packet, @Nullable PacketCallbacks callbacks);
 }
-*/

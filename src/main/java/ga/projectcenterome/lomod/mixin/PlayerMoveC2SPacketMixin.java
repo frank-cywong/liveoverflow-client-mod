@@ -6,10 +6,17 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(PlayerMoveC2SPacket.class)
 public class PlayerMoveC2SPacketMixin {
+    @ModifyVariable(method = "<init>(DDDFFZZZ)V", at = @At("HEAD"), ordinal = 0)
+    private static double injected(double x) {
+        ExampleMod.LOGGER.info("CHANGING X COORD FROM: " + x + " TO " + (((double)((int)(x * 100))) / 100.0));
+        return (((double)((int)(x * 100))) / 100.0);
+    }
+    /*
     @ModifyArg(method = "<init>(DDDFFZZZ)V", at=@At("HEAD"), cancellable = true)
     public void newInit(double x, double y, double z, float yaw, float pitch, boolean onGround, boolean changePosition, boolean changeLook,  CallbackInfo callback) {
         // help me
@@ -24,4 +31,5 @@ public class PlayerMoveC2SPacketMixin {
         p.changeLook = changeLook;
         callback.cancel()
     }
+    */
 }
