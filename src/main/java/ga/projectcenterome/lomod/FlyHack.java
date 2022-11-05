@@ -32,7 +32,7 @@ public class FlyHack {
                 tickCounter++;
             }
             oldY = newY;
-            if(tickCounter >= 20 && client.player.world.getBlockState(new BlockPos(client.player.getPos().subtract(0.0, 0.0433D, 0.0))).isAir()){
+            if(tickCounter >= 10 && client.player.world.getBlockState(new BlockPos(client.player.getPos().subtract(0.0, 0.0433D, 0.0))).isAir()){
                 tickCounter = 0;
                 sendAdjustmentPacket(client);
             }
@@ -40,6 +40,6 @@ public class FlyHack {
     }
     public static void sendAdjustmentPacket(MinecraftClient client){
         ExampleMod.LOGGER.info("Sending fly hack adjustment packet");
-        PacketHelper.sendPos(client.player.getPos().subtract(0.0, 0.0433D, 0.0));
+        PacketHelper.sendPos(client.player.getPos().subtract(0.0, 0.06D, 0.0));
     }
 }
