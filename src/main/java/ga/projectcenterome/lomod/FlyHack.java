@@ -28,11 +28,11 @@ public class FlyHack {
         }
         if(flyHackOn){
             double newY = client.player.getPos().getY();
-            if(newY >= oldY - 0.0433D) {
+            if(newY >= oldY - 0.06D) {
                 tickCounter++;
             }
             oldY = newY;
-            if(tickCounter >= 10 && client.player.world.getBlockState(new BlockPos(client.player.getPos().subtract(0.0, 0.0433D, 0.0))).isAir()){
+            if(tickCounter >= 10 && client.player.world.getBlockState(new BlockPos(client.player.getPos().subtract(0.0, 0.06D, 0.0))).isAir()){
                 tickCounter = 0;
                 sendAdjustmentPacket(client);
             }

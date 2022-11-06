@@ -30,7 +30,7 @@ public class ExampleMod implements ModInitializer {
 
 		LOGGER.info("Hello Fabric world!");
 		flyHack = new FlyHack();
-		ClientTickEvents.START_CLIENT_TICK.register((client -> {
+		ClientTickEvents.END_CLIENT_TICK.register((client -> {
 			onTick(client);
 		}));
 		ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
