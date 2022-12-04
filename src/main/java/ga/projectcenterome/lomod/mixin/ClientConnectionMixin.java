@@ -10,6 +10,7 @@ import net.minecraft.network.PacketCallbacks;
 import net.minecraft.network.listener.PacketListener;
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
 import net.minecraft.network.packet.s2c.play.PlayerPositionLookS2CPacket;
+import net.minecraft.util.math.Vec3d;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -23,6 +24,12 @@ import java.util.Queue;
 public class ClientConnectionMixin {
     @Inject(at = @At("HEAD"), method = "send(Lnet/minecraft/network/Packet;Lnet/minecraft/network/PacketCallbacks;)V", cancellable = true)
     private void send(Packet<?> packet, @Nullable PacketCallbacks callbacks, CallbackInfo callback) {
+        if(packet instanceof PlayerMoveC2SPacket) {
+            ExampleMod.LOGGER.info("PACKET TYPE DETECTED");
+            Vec3d pos = ExampleMod.client.player.getPos();
+            ExampleMod.LOGGER.info("Debug position: x = " + pos.x + ", y= " + pos.y + ", z = " + pos.z);
+        }
+            //PlayerMoveC2SPacket oldP = (PlayerMoveC2SPacket)(packet);
         //ExampleMod.LOGGER.info("SENDING PACKET: " + packet.getClass().getName());
         /* this doesn't work
         if(packet instanceof PlayerMoveC2SPacket){
